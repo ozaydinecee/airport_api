@@ -7,6 +7,8 @@ import com.airport.airport_api.repository.FlightRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,5 +59,33 @@ public class FlightServiceImpl implements FlightService {
             return "Flight deleted successfully";
         }
         return "Flight not found";
+    }
+
+    @Override
+    public List<Flight> searchFlights(String departureAirport, String arrivalAirport, Instant departureDateTime, Instant returnDateTime) {
+        List<Flight> validFlights = new ArrayList<>();
+        List<Flight> flights = flightRepository.findByDepartureAirportAndArrivalAirportAndDepartureDateTimeGreaterThanEqual(
+                departureAirport, arrivalAirport, departureDateTime);
+        validFlights.addAll(flights);
+
+        if (returnDateTime != null) {
+            Flight newReturnFlight = new Flight();
+            newReturnFlight.setDepartureAirport(arrivalAirport);
+            newReturnFlight.setArrivalAirport(departureAirport);
+            newReturnFlight.setDepartureDateTime(returnDateTime);
+
+
+            List<Flight> returnFlights = flightRepository.findByDepartureAirportAndArrivalAirportAndDepartureDateTimeGreaterThanEqual(
+                    newReturnFlight.getDepartureAirport(),
+                    newReturnFlight.getArrivalAirport(),
+                    newReturnFlight.getDepartureDateTime());
+
+            if (!returnFlights.isEmpty()) {
+                validFlights.addAll(returnFlights);
+
+            }
+        }
+
+        return validFlights;
     }
 }
