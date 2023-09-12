@@ -2,3 +2,9 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/airportDB
+
+application:
+  security:
+    jwt:
+      secret-key: 6af10d6e9ebd8b98ab1d782262fb422279eab619f6962935e5d1dd52aa170e39
+
