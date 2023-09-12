@@ -1,5 +1,6 @@
 package com.airport.airport_api.service;
 
+import com.airport.airport_api.exception.AirportNameAlreadyExistsException;
 import com.airport.airport_api.exception.AirportNotFoundException;
 import com.airport.airport_api.model.Airport;
 import com.airport.airport_api.repository.AirportRepository;
@@ -15,8 +16,11 @@ public class AirportServiceImpl implements AirportService {
 
     private final AirportRepository airportRepository;
     @Override
-    public Airport createAirport(Airport airport) {
-        return airportRepository.save(airport);
+    public Airport createAirport(Airport airport) throws AirportNameAlreadyExistsException {
+        if(!airportRepository.existsByCityName(airport.getCityName())){
+            return airportRepository.save(airport);
+        }
+        throw new AirportNameAlreadyExistsException("Airport already exist with name: " + airport.getCityName());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.airport.airport_api.controller;
 
+import com.airport.airport_api.exception.AirportNameAlreadyExistsException;
 import com.airport.airport_api.exception.AirportNotFoundException;
 import com.airport.airport_api.model.Airport;
 import com.airport.airport_api.service.AirportService;
@@ -25,8 +26,13 @@ public class AirportController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Airport> createAirport(@RequestBody Airport airport){
-        return ResponseEntity.ok(airportService.createAirport(airport));
+    public ResponseEntity<?> createAirport(@RequestBody Airport airport) throws AirportNameAlreadyExistsException {
+        try {
+            Airport createdAirport = airportService.createAirport(airport);
+            return ResponseEntity.ok(createdAirport);
+        } catch (AirportNameAlreadyExistsException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
+        }
     }
 
     @GetMapping("/{id}")
