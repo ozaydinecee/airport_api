@@ -1,5 +1,6 @@
 package com.airport.airport_api.service;
 
+import com.airport.airport_api.exception.AirportNameAlreadyExistsException;
 import com.airport.airport_api.exception.AirportNotFoundException;
 import com.airport.airport_api.model.Airport;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import java.util.List;
 @Service
 @Component
 public interface AirportService {
-    Airport createAirport(Airport airport);
+    Airport createAirport(Airport airport) throws AirportNameAlreadyExistsException;
     public List<Airport> getAllAirports();
     Airport updateAirport(String id, Airport airport) throws AirportNotFoundException;
 

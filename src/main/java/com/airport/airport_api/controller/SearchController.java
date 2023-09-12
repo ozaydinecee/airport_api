@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SearchController {
     private final FlightService flightService;
-    @GetMapping("/search")
+    @GetMapping("/api/v1/search")
     public List<?> searchFlights(
             @RequestParam String departureAirport,
             @RequestParam String arrivalAirport,

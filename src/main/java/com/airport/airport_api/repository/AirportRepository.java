@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AirportRepository extends MongoRepository<Airport,String> {
-}
+    boolean existsByCityName(String cityName);}
