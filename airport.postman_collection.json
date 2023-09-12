@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "f2846d85-e5ae-469b-874d-9fc6b08d67a9",
+		"name": "airport",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25819949"
+	},
+	"item": [
+		{
+			"name": "flights",
+			"item": [
+				{
+					"name": "delete flight",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/flight/64e4b1762c2c713d535d0ecb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight",
+								"64e4b1762c2c713d535d0ecb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create flight",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"departureAirport\": \"ADANA\",\r\n        \"arrivalAirport\": \"IST\",\r\n        \"departureDateTime\": \"2023-08-22T10:00:00.910Z\",\r\n        \"returnDateTime\": \"2023-08-22T11:36:04.910Z\",\r\n        \"price\": 1500.0\r\n    }\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all flights",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbGlmQGdtYWlsLmNvbSIsImlhdCI6MTY5NDQ2MTc0MSwiZXhwIjoxNjk0NDYzMTgxfQ.8LQJJUzBjs5XUU-2KHEt8OSKO4DP5G4vtKhXINiNjL8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/flight",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"flight"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get flight by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/flight/64fe118a6de8b55c222b614",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"flight",
+								"64fe118a6de8b55c222b614"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update flight",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"64e4b1762c2c713d535d0ecb\",\r\n    \"departureAirport\": \"IZMIR\",\r\n    \"arrivalAirport\": \"ISTANBUL\",\r\n    \"departureDateTime\": \"2023-08-22T10:00:00.910Z\",\r\n    \"arrivalDateTime\": \"2023-08-22T11:36:04.910Z\",\r\n    \"price\": 1500.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flight/64e4b1762c2c713d535d0ecb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flight",
+								"64e4b1762c2c713d535d0ecb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "airport",
+			"item": [
+				{
+					"name": "get all airports",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbGlmQGdtYWlsLmNvbSIsImlhdCI6MTY5NDQ2MTc0MSwiZXhwIjoxNjk0NDYzMTgxfQ.8LQJJUzBjs5XUU-2KHEt8OSKO4DP5G4vtKhXINiNjL8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/airport",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"airport"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create airport",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"cityName\": \"MERSIN\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/airport/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"airport",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update airport",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cityName\": \"ADANA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/airport/ca6436cd-c656-43f2-a707-47d702a836fc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"airport",
+								"ca6436cd-c656-43f2-a707-47d702a836fc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get airport by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/airport/64fde0f70d69863a9155ad7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"airport",
+								"64fde0f70d69863a9155ad7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete airport",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/airport/64fde0f70d69863a9155ad7d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"airport",
+								"64fde0f70d69863a9155ad7d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "search",
+			"item": [
+				{
+					"name": "search flight",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbGlmQGdtYWlsLmNvbSIsImlhdCI6MTY5NDU0NjY5NiwiZXhwIjoxNjk0NTQ2ODc2fQ.Y1-ylfRsGfCCyz4mg_onAtt-LPeA4-uSE8vSuqNjk-A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/search?departureAirport=MERSİN&arrivalAirport=ADANA&departureDateTime=2023-08-22T09:18:28.185Z",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"search"
+							],
+							"query": [
+								{
+									"key": "departureAirport",
+									"value": "MERSİN"
+								},
+								{
+									"key": "arrivalAirport",
+									"value": "ADANA"
+								},
+								{
+									"key": "departureDateTime",
+									"value": "2023-08-22T09:18:28.185Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iki yönlü uçuş ara",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/search?departureAirport=ADANA&arrivalAirport=MERSİN&departureDateTime=2023-09-22T11:36:04.910Z&returnDateTime=2023-09-22T11:36:04.910Z",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"search"
+							],
+							"query": [
+								{
+									"key": "departureAirport",
+									"value": "ADANA"
+								},
+								{
+									"key": "arrivalAirport",
+									"value": "MERSİN"
+								},
+								{
+									"key": "departureDateTime",
+									"value": "2023-09-22T11:36:04.910Z"
+								},
+								{
+									"key": "returnDateTime",
+									"value": "2023-09-22T11:36:04.910Z"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "authenticate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\":\"ecoz@gmail.com\",\r\n    \"password\": \"1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/auth/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"ecesu\",\r\n    \"lastName\":\"özaydınella\",\r\n    \"email\":\"ecoz@gmail.com\",\r\n    \"password\": \"1111\",\r\n    \"role\":\"ADMIN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
