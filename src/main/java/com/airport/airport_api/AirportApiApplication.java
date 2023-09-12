@@ -29,5 +29,20 @@ public class AirportApiApplication {
 
             airportRepository.save(airport);
 
+        };
+
+    @Bean
+    CommandLineRunner runner(UserRepository userRepository){
+        return args ->{
+            User user=new User();
+            user.setId(UUID.randomUUID());
+            user.setEmail("ozaydinecee@gmail.com");
+            user.setPassword("ece123");
+            user.setFirstName("ece");
+            user.setLastName("ozaydin");
+            user.setRole(Role.ADMIN);
+
+            userRepository.save(user);
+
         };*/
     }

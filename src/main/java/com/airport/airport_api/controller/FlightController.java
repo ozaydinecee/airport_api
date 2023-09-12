@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/flight")
+@RequestMapping("/api/v1/flight")
 public class FlightController {
     private final FlightService flightService;
 
